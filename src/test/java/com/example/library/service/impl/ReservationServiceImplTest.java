@@ -13,16 +13,18 @@ import com.example.library.model.dto.response.ReservationInfoResponse;
 import com.example.library.model.enums.Status;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Spy;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.Optional;
 
 import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
-
+@RunWith(MockitoJUnitRunner.class)
 public class ReservationServiceImplTest {
     @InjectMocks
     private ReservationServiceImpl reservationService;
@@ -34,8 +36,8 @@ public class ReservationServiceImplTest {
     public void createReservation() {
         Reservation reservation =new Reservation();
         reservation.setId(1L);
-        reservation.setLibraryCard(new Reader());
-        reservation.setBook(new Book());
+        /*reservation.setLibraryCard(new Reader());
+        reservation.setBook(new Book());*/
         when(reservationRepo.save(any(Reservation.class)))
                 .thenReturn(reservation);
         ReservationInfoRequest request=new ReservationInfoRequest();

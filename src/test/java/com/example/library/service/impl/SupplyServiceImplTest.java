@@ -11,16 +11,18 @@ import com.example.library.model.dto.response.SupplyInfoResponse;
 import com.example.library.model.enums.Status;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Spy;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.Optional;
 
 import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
-
+@RunWith(MockitoJUnitRunner.class)
 public class SupplyServiceImplTest {
     @InjectMocks
     private SupplyServiceImpl supplyService;
