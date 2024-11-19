@@ -17,6 +17,4 @@ import lombok.experimental.SuperBuilder;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SupplyInfoResponse extends SupplyInfoRequest {
     Long id;
-    ProviderInfoResponse provider;
-    RequestInfoResponse request;
 }

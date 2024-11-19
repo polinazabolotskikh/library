@@ -4,6 +4,8 @@ import com.example.library.model.db.entity.Employee;
 import com.example.library.model.dto.request.EmployeeInfoRequest;
 import com.example.library.model.dto.response.EmployeeInfoResponse;
 
+import java.util.List;
+
 public interface EmployeeService {
     EmployeeInfoResponse createEmployee(EmployeeInfoRequest request);
 
@@ -14,4 +16,8 @@ public interface EmployeeService {
     EmployeeInfoResponse updateEmployee(Long id, EmployeeInfoRequest request);
 
     void deleteEmployee(Long id);
+
+    List<Employee> getAllEmployees();
+
+    EmployeeInfoRequest convertEmployee(Employee s);
 }

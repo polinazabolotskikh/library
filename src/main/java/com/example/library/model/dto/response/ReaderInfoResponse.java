@@ -14,5 +14,5 @@ import lombok.experimental.SuperBuilder;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ReaderInfoResponse extends ReaderInfoRequest {
-    Long libraryCard;
+    Long id;
 }

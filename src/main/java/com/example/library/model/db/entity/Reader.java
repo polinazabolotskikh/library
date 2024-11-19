@@ -1,7 +1,6 @@
 package com.example.library.model.db.entity;
 
 import com.example.library.model.enums.Status;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
@@ -13,8 +12,6 @@ import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.List;
 
 @Getter
 @Setter
@@ -24,8 +21,9 @@ import java.util.List;
 public class Reader {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
     @Column(name = "library_card")
-    Long libraryCard;
+    String library_card;
     String fio;
     Integer age;
     String email;

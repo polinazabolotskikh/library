@@ -24,12 +24,10 @@ public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    @ManyToOne
-    @JoinColumn(name = "library_Card", referencedColumnName = "library_Card")
-    Reader libraryCard;
-    @ManyToOne
-    @JoinColumn(name = "book", referencedColumnName = "id")
-    Book book;
+    @Column(name="library_card")
+    String libraryCard;
+    @Column(name="book_id")
+    Long book;
     @Column(name="date_borrow")
     String dateBorrow;
     @Column(name="date_return")

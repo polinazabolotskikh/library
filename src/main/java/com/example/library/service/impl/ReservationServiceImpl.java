@@ -1,11 +1,9 @@
 package com.example.library.service.impl;
 
 import com.example.library.exceptions.CustomException;
-import com.example.library.model.db.entity.Book;
 import com.example.library.model.db.entity.Reservation;
 import com.example.library.model.db.repository.ReservationRepo;
 import com.example.library.model.dto.request.ReservationInfoRequest;
-import com.example.library.model.dto.response.BookInfoResponse;
 import com.example.library.model.dto.response.ReservationInfoResponse;
 import com.example.library.model.enums.Status;
 import com.example.library.service.ReservationService;
@@ -16,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Slf4j
 @Service
@@ -46,6 +45,8 @@ public class ReservationServiceImpl implements ReservationService {
     public ReservationInfoResponse updateReservation(Long id, ReservationInfoRequest request) {
         Reservation reservation = getReservationDb(id);
         if (reservation.getId() != null) {
+            reservation.setBook(request.getBook()==null ? reservation.getBook():request.getBook());
+            reservation.setLibraryCard(request.getLibraryCard()==null ? reservation.getLibraryCard():request.getLibraryCard());
             reservation.setDateBorrow(request.getDateBorrow()==null ? reservation.getDateBorrow():request.getDateBorrow());
             reservation.setDateReturn(request.getDateReturn()==null ? reservation.getDateReturn():request.getDateReturn());
             reservation.setStatus(Status.UPDATED);
@@ -69,4 +70,15 @@ public class ReservationServiceImpl implements ReservationService {
             log.error("Reservation not found");
         }
     }
+
+    @Override
+    public ReservationInfoRequest convertReservation(Reservation reservation){
+        return mapper.convertValue(reservation, ReservationInfoRequest.class);
+    }
+    @Override
+    public List<Reservation> getAllReservations(String libraryCard) {
+        return
+                reservationRepo.findByLibraryCard(libraryCard);
+    }
+
 }

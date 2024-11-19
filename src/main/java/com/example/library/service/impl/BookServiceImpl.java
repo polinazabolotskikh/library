@@ -14,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Slf4j
 @Service
@@ -21,6 +22,7 @@ import java.time.LocalDateTime;
 public class BookServiceImpl implements BookService {
     private final BookRepo bookRepo;
     private final ObjectMapper mapper;
+
     @Override
     public BookInfoResponse createBook(BookInfoRequest request) {
         Book book = mapper.convertValue(request, Book.class);
@@ -72,4 +74,21 @@ public class BookServiceImpl implements BookService {
             log.error("Book not found");
         }
     }
+    @Override
+    public List<Book> getAllBooks() {
+        return bookRepo.findAll();
+    }
+
+    @Override
+    public Book getBook1(Long id) {
+        return mapper.convertValue(getBookDb(id), Book.class);
+    }
+    @Override
+    public BookInfoRequest convertBook(Book book){
+        return mapper.convertValue(book, BookInfoRequest.class);
+    }
+
+
+
 }
+

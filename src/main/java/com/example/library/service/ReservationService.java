@@ -4,6 +4,8 @@ import com.example.library.model.db.entity.Reservation;
 import com.example.library.model.dto.request.ReservationInfoRequest;
 import com.example.library.model.dto.response.ReservationInfoResponse;
 
+import java.util.List;
+
 public interface ReservationService {
     ReservationInfoResponse createReservation(ReservationInfoRequest request);
 
@@ -14,4 +16,8 @@ public interface ReservationService {
     ReservationInfoResponse updateReservation(Long id, ReservationInfoRequest request);
 
     void deleteReservation(Long id);
+
+    ReservationInfoRequest convertReservation(Reservation reservation);
+
+    List <Reservation> getAllReservations(String libraryCard);
 }

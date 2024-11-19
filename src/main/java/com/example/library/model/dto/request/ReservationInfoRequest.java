@@ -16,6 +16,8 @@ import java.util.Date;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ReservationInfoRequest {
+    String libraryCard;
+    Long book;
     String dateBorrow;
     String dateReturn;
 }

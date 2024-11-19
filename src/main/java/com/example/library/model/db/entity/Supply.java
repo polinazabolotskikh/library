@@ -23,12 +23,9 @@ public class Supply {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    @ManyToOne
-    @JoinColumn(name = "provider", referencedColumnName = "id")
-    Provider provider;
-    @ManyToOne
-    @JoinColumn(name = "request", referencedColumnName = "id")
-    Request request;
+    String provider;
+    String phone;
+    Long request;
     Integer quantity;
     @Column(name = "created_at")
     @JsonSerialize(using = LocalDateTimeSerializer.class)

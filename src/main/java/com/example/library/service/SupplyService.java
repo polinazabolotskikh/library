@@ -4,6 +4,8 @@ import com.example.library.model.db.entity.Supply;
 import com.example.library.model.dto.request.SupplyInfoRequest;
 import com.example.library.model.dto.response.SupplyInfoResponse;
 
+import java.util.List;
+
 public interface SupplyService {
 
      SupplyInfoResponse createSupply(SupplyInfoRequest request);
@@ -15,4 +17,8 @@ public interface SupplyService {
     SupplyInfoResponse updateSupply(Long id, SupplyInfoRequest request);
 
      void deleteSupply(Long id);
+
+    List<Supply> getAllSupplies();
+
+    SupplyInfoRequest convertSupply(Supply s);
 }

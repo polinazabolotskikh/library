@@ -1,11 +1,9 @@
 package com.example.library.service.impl;
 
 import com.example.library.exceptions.CustomException;
-import com.example.library.model.db.entity.Book;
 import com.example.library.model.db.entity.Supply;
 import com.example.library.model.db.repository.SupplyRepo;
 import com.example.library.model.dto.request.SupplyInfoRequest;
-import com.example.library.model.dto.response.BookInfoResponse;
 import com.example.library.model.dto.response.SupplyInfoResponse;
 import com.example.library.model.enums.Status;
 import com.example.library.service.SupplyService;
@@ -16,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Slf4j
 @Service
@@ -47,7 +46,10 @@ public class SupplyServiceImpl implements SupplyService {
     public SupplyInfoResponse updateSupply(Long id, SupplyInfoRequest request) {
         Supply supply = getSupplyDb(id);
         if (supply.getId() != null) {
+            supply.setProvider(request.getProvider()==null ? supply.getProvider():request.getProvider());
+            supply.setRequest(request.getRequest()==null ? supply.getRequest():request.getRequest());
             supply.setQuantity(request.getQuantity()==null ? supply.getQuantity():request.getQuantity());
+            supply.setPhone(request.getPhone()==null ? supply.getPhone():request.getPhone());
             supply.setStatus(Status.UPDATED);
             supply.setUpdatedAt(LocalDateTime.now());
             supply=supplyRepo.save(supply);
@@ -69,4 +71,15 @@ public class SupplyServiceImpl implements SupplyService {
             log.error("Supply not found");
         }
     }
+
+    @Override
+    public List<Supply> getAllSupplies() {
+        return supplyRepo.findAll();
+    }
+
+    @Override
+    public SupplyInfoRequest convertSupply(Supply s){
+        return mapper.convertValue(s, SupplyInfoRequest.class);
+    }
+
 }

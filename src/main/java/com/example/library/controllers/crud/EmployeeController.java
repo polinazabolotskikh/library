@@ -1,4 +1,4 @@
-package com.example.library.controllers;
+package com.example.library.controllers.crud;
 
 import com.example.library.model.dto.request.EmployeeInfoRequest;
 import com.example.library.model.dto.response.EmployeeInfoResponse;

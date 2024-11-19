@@ -1,5 +1,6 @@
-package com.example.library.controllers;
+package com.example.library.controllers.crud;
 
+import com.example.library.model.db.entity.Reader;
 import com.example.library.model.dto.request.EmployeeInfoRequest;
 import com.example.library.model.dto.request.ProviderInfoRequest;
 import com.example.library.model.dto.request.ReaderInfoRequest;
@@ -12,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/readers")
@@ -40,5 +42,11 @@ public class ReaderController {
     @Operation(summary = "Удаление читателя")
     public void deleteReader(@PathVariable Long id) {
         readerService.deleteReader(id);
+    }
+
+    @GetMapping("/all")
+    @Operation(summary = "Получить всех")
+    public List<Reader> getAll(){
+        return readerService.getAllReaders();
     }
 }

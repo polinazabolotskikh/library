@@ -1,11 +1,9 @@
 package com.example.library.service.impl;
 
 import com.example.library.exceptions.CustomException;
-import com.example.library.model.db.entity.Book;
 import com.example.library.model.db.entity.Employee;
 import com.example.library.model.db.repository.EmployeeRepo;
 import com.example.library.model.dto.request.EmployeeInfoRequest;
-import com.example.library.model.dto.response.BookInfoResponse;
 import com.example.library.model.dto.response.EmployeeInfoResponse;
 import com.example.library.model.enums.Status;
 import com.example.library.service.EmployeeService;
@@ -16,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Slf4j
 @Service
@@ -71,4 +70,14 @@ public class EmployeeServiceImpl implements EmployeeService {
         log.error("Employee not found");
     }
     }
+    @Override
+    public List<Employee> getAllEmployees() {
+        return employeeRepo.findAll();
+    }
+
+    @Override
+    public EmployeeInfoRequest convertEmployee(Employee s){
+        return mapper.convertValue(s, EmployeeInfoRequest.class);
+    }
+
 }

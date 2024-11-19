@@ -14,6 +14,7 @@ import java.util.Date;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ReaderInfoRequest {
+    String library_card;
     String fio;
     Integer age;
     String email;

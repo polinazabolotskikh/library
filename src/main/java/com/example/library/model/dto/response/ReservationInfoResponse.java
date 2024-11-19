@@ -15,6 +15,5 @@ import lombok.experimental.SuperBuilder;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ReservationInfoResponse extends ReservationInfoRequest {
     Long id;
-    ReaderInfoResponse libraryCard;
-    BookInfoResponse book;
+
 }

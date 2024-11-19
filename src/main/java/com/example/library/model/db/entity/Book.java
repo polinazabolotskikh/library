@@ -51,8 +51,5 @@ public class Book {
     @Enumerated(EnumType.STRING)
     Status status;
 
-/*    @OneToMany
-    @JsonManagedReference(value="reservation_books")
-    List<Reservation> reservations;*/
 
 }
